@@ -29,13 +29,25 @@ public class Colour
         Green = green; 
         Blue = blue;
     }
-    public static Colour White(){
-        Colour white = new(255, 255, 255);
-        return white;
-    }
+    public static Colour White { get; } = new(255, 255, 255);
     public static Colour Black(){ 
         Colour black = new(0, 0, 0);
         return black; 
     }
 
+}
+
+public class Card
+{
+    public CardColour Colour { get; }
+    public Rank Rank {  get; }
+
+    public Card(CardColour colour, Rank rank){
+        Colour = colour;
+        Rank = rank;
+    }
+
+    public bool IsCardNumber => Rank <= Rank.Ten;
+    public bool IsCardSymbol => !IsCardNumber;
+    
 }

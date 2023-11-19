@@ -12,19 +12,25 @@ ChallengeEnd();
 
 // The Colour
 Colour colour1 = new(125, 125, 125);
-Colour white = Colour.White();
+Colour white = Colour.White;
+Colour black = Colour.Black();
+
 
 DisplayColour(colour1);
 DisplayColour(white);
+DisplayColour(black);
+
+
 
 ChallengeEnd();
 
 // The Card
+CreateDeck();
 
 
 
 
-
+// METHODS
 // Challenge end method
 void ChallengeEnd()
 {
@@ -41,4 +47,28 @@ void DisplayPoint(Point p)
 void DisplayColour(Colour colour)
 {
     Console.WriteLine($"{colour.Red}, {colour.Green}, {colour.Blue}");
+}
+
+// The Card
+void CreateDeck()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 14; j++) {
+
+            Card card = new Card((CardColour)i, (Rank)j);
+            Console.WriteLine($"The card {card.Colour} {card.Rank}");
+
+        }
+    }
+}
+
+public enum CardColour
+{
+    Red, Green, Blue, Yellow
+}
+
+public enum Rank
+{
+    One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Dollar, Percent, Power, Ampersand
 }
