@@ -51,3 +51,32 @@ public class Card
     public bool IsCardSymbol => !IsCardNumber;
     
 }
+
+public class Door
+{
+    public DoorState State { get; private set; }
+    private int _currentPassword;
+
+    public Door(int initialPassword) { 
+        State = DoorState.Closed;
+        _currentPassword = initialPassword;    
+    }
+
+    public void ChangePassword(int currentPassword, int newPassword)
+    {
+        if (currentPassword == _currentPassword) { _currentPassword = newPassword; }
+        else { Console.WriteLine("Incorrect Password"); }
+
+    }
+
+    public void Close(){ if (State == DoorState.Open){ State = DoorState.Closed;} }
+    public void Open() { if (State == DoorState.Closed) { State = DoorState.Open; } }
+    public void Lock() { if (State == DoorState.Closed) { State = DoorState.Locked;} }
+    public void Unlock(int password) {
+        if (State == DoorState.Locked && password == _currentPassword)
+        {
+            State = DoorState.Closed;
+        }
+        else { Console.WriteLine("Password incorrect"); }
+    }
+}

@@ -20,12 +20,25 @@ DisplayColour(colour1);
 DisplayColour(white);
 DisplayColour(black);
 
-
-
 ChallengeEnd();
 
 // The Card
 CreateDeck();
+
+ChallengeEnd();
+
+// The Door
+Console.WriteLine("Set a password with 4 numbers..");
+
+int newPassword = Convert.ToInt32(Console.ReadLine());
+
+Door door1 = new(newPassword);
+
+while (true)
+{
+    Console.WriteLine("Change door state..");
+
+}
 
 
 
@@ -72,3 +85,5 @@ public enum Rank
 {
     One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Dollar, Percent, Power, Ampersand
 }
+
+public enum DoorState { Open, Closed, Locked}
