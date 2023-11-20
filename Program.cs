@@ -36,7 +36,38 @@ Door door1 = new(newPassword);
 
 while (true)
 {
-    Console.WriteLine("Change door state..");
+    Console.WriteLine("Change door state. Or change password..");
+    string input = Console.ReadLine();
+
+    switch (input)
+    {
+        case "open":
+            door1.Open();
+            break;
+        case "close":
+            door1.Close();
+            break;
+        case "lock":
+            door1.Lock(); 
+            break;
+        case "unlock":
+            Console.WriteLine("Enter password");
+            int password = Convert.ToInt32(Console.ReadLine());
+            door1.Unlock(password);
+            break;
+        case "change password":
+            Console.WriteLine("Please enter the current password");
+            int crrntPsswrd = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please enter the new password");
+            int nwPsswrd = Convert.ToInt32(Console.ReadLine());
+            door1.ChangePassword(crrntPsswrd, nwPsswrd);
+            break;
+        default: 
+            Console.WriteLine("Unknown command");
+            break;
+    }
+
+    Console.WriteLine($"The door is currently {door1.State}");
 
 }
 
